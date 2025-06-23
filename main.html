@@ -1,60 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Hover Effect Grid</title>
-    <style>
-        /* CSS embedded here */
-        .container {
-            display: grid;
-            grid-template-columns: repeat(20, 1fr); /* Adjust as needed for desired grid size */
-            grid-template-rows: repeat(15, 1fr); /* Adjust as needed for desired grid size */
-            width: 80vw; /* Example width, adjust as needed */
-            height: 60vh; /* Example height, adjust as needed */
-            gap: 2px; /* Small gap between squares */
-            background-color: #333;
-            padding: 10px;
-            margin: 20px auto; /* Center the container */
-            border-radius: 5px;
-        }
+  <title></title>
+  <style>
+    .container {
+      display: grid;
+      grid-template-columns: repeat(20, 30px);
+      grid-template-rows: repeat(15, 30px);
+      gap: 2px;
+      background-color: #111;
+      padding: 10px;
+      margin: 20px auto;
+      border-radius: 5px;
+      width: max-content;
+    }
 
-        .square {
-            background-color: #555; /* Default background color of squares */
-            transition: background-color 1s ease-out; /* Smooth transition for color change */
-        }
+    .square {
+      width: 30px;
+      height: 30px;
+      background-color: #222;
+      transition: background-color 0.5s ease;
+    }
 
-        /* Optional: Add a subtle hover effect for immediate feedback before the transition starts */
-        .square:hover {
-            background-color: #888; /* Slightly lighter on immediate hover */
-        }
-    </style>
+    .square:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        </div>
 
-    <script>
-        /* JavaScript embedded here */
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.querySelector('.container');
-            const numberOfSquares = 300; // Total squares (e.g., 20 columns * 15 rows)
+  <div class="container"></div>
 
-            for (let i = 0; i < numberOfSquares; i++) {
-                const square = document.createElement('div');
-                square.classList.add('square');
-                container.appendChild(square);
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.container');
+      const rows = 15;
+      const cols = 20;
+      const total = rows * cols;
 
-                square.addEventListener('mouseover', () => {
-                    // Add a random color when hovered
-                    const randomColor = `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
-                    square.style.backgroundColor = randomColor;
+      for (let i = 0; i < total; i++) {
+        const square = document.createElement('div');
+        square.classList.add('square');
+        container.appendChild(square);
 
-                    // Use a timeout to reset the color after 1 second
-                    setTimeout(() => {
-                        square.style.backgroundColor = ''; // Reset to default from CSS
-                    }, 1000); // 1000 milliseconds = 1 second
-                });
-            }
+        square.addEventListener('mouseover', () => {
+          const randomColor = `rgb(${Math.floor(Math.random() * 256)}, 
+                                   ${Math.floor(Math.random() * 256)}, 
+                                   ${Math.floor(Math.random() * 256)})`;
+          square.style.backgroundColor = randomColor;
+
+          setTimeout(() => {
+            square.style.backgroundColor = '#222';
+          }, 1000);
         });
-    </script>
+      }
+    });
+  </script>
+
 </body>
 </html>
